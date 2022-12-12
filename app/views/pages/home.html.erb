@@ -1,0 +1,18 @@
+<%# <p>Find me in app/views/pages/home.html.erb</p> %>
+<% if user_signed_in? %>
+  <h1><%= "Hello, #{current_user.email }" %></h1>
+  <h4>You can test the API with following credentials: </h4>
+  <div class="container">
+    <ul>
+      <li><%= link_to "Web Books", books_path %></li>
+      <li>API V1 Books</li>
+      <li>API V1 Android Books</li>
+    </ul>
+  </div>
+  <%= button_to "Sign out", destroy_user_session_path, class: "my-2 btn btn-danger", method: :delete %>
+<% else %>
+  <h1><%= "Hello, You're not Sign-in "%></h1>
+  <%= link_to "Sign in", new_user_session_path, class: " my-2 btn btn-primary" %>
+  <br>
+  <%= link_to "Sign up", new_user_registration_path, class: "my-2 btn btn-success" %>
+<% end %>
